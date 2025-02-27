@@ -51,17 +51,17 @@ bool GuessValid(char guess, vector<char> guessed_letters) {
   }
   
   
-  void PrintState(const string& mystery_word_so_far, unsigned int misses) {
-    cout << endl;
-    cout << "--- Current State --- " << endl;
-  
-    cout << "You have " << 6 - misses << " lives left." << endl;
-    cout << "Word: ";
+  string PrintState(const string& mystery_word_so_far, unsigned int misses) {
+    string x = "--- Current State --- \n " "You have "; 
+    
+    x += 6 - misses;
+    x += " lives left. \n";
+    x += "Word: ";
     for (unsigned int i = 0; i < mystery_word_so_far.length(); i++) {
-      cout << mystery_word_so_far[i] << " ";
+      x+= mystery_word_so_far[i];
+      x+= " ";
     }
-    cout << endl;
-    cout << endl;
+    return x;
   }
   
   
@@ -94,13 +94,15 @@ bool GuessValid(char guess, vector<char> guessed_letters) {
   }
   
   
-  void GuessFeedback(bool correct_guess, char guess) {
-    cout << endl;
+  string GuessFeedback(bool correct_guess, char guess) {
+    string x = "The letter ";
+    x += guess;
     if (correct_guess) {
-      cout << "The letter \'" << guess << "\' is in the word!" << endl;
+      x += " is in the word!";
     } else {
-      cout << "The letter \'" << guess << "\' is not in the word." << endl;
+      x += " is not in the word.";
     }
+    return x;
   }
   
   
@@ -109,15 +111,10 @@ bool GuessValid(char guess, vector<char> guessed_letters) {
                           const string& solution) {
     bool helper = WordCompleted(word_so_far);
     if (helper) {
-      PrintState(word_so_far, misses);
-      cout << "You win! You guessed the word, " << word_so_far << "." << endl;
       return true;
     }
   
     if (misses == 6) {
-      PrintState(word_so_far, misses);
-      cout << "You used up your last guess and lost!" << endl;
-      cout << "The word was, " << solution << "." << endl;
       return true;
     }
   

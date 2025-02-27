@@ -19,7 +19,7 @@ string GetBlankWord(unsigned int size);
 bool WordCompleted(const string& word);
 
 
-void PrintState(const string& mystery_word_so_far, unsigned int misses);
+string PrintState(const string& mystery_word_so_far, unsigned int misses);
 
 
 char GetNextGuess(const vector<char>& guessed_letters);
@@ -28,7 +28,7 @@ char GetNextGuess(const vector<char>& guessed_letters);
 bool CheckWordForGuess(string& word_so_far, string word, char guess);
 
 
-void GuessFeedback(bool correct_guess, char guess);
+string GuessFeedback(bool correct_guess, char guess);
 
 
 bool CheckEndConditions(const string& word_so_far,
