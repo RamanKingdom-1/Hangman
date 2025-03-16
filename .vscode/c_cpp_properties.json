@@ -3,7 +3,9 @@
         {
             "name": "Mac",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "Crow/include",
+                "../opt/homebrew"
             ],
             "defines": [],
             "macFrameworkPath": [
